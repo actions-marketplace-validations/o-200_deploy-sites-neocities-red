@@ -31,5 +31,4 @@ runs:
         NEOCITIES_API_KEY: ${{ inputs.key }}
       run: |
         set -euo pipefail
-        ls
         neocities-red push --ignore-dotfiles --optimized .
