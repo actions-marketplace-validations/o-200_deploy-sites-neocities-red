@@ -1,0 +1,34 @@
+name: Deploy to Neocities
+description: Deploys the current repository to Neocities using the Ruby CLI
+author: o-200
+
+branding:
+  icon: upload-cloud
+  color: red
+
+inputs:
+  key:
+    description: Neocities API token
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '4.0'
+
+    - name: Install neocities-red
+      shell: bash
+      run: |
+        set -euo pipefail
+        gem install --no-document neocities-red
+
+    - name: Deploy
+      shell: bash
+      env:
+        NEOCITIES_API_KEY: ${{ inputs.key }}
+      run: |
+        set -euo pipefail
+        neocities-red push --ignore-dotfiles --optimized .
