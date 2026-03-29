@@ -1,5 +1,5 @@
-name: Deploy to Neocities
-description: Deploys the current repository to Neocities using the Ruby CLI
+name: Deploy to Neocities (using neocities-red gem)
+description: Deploys the current repository to Neocities
 author: o-200
 
 branding:
